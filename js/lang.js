@@ -1,16 +1,16 @@
-// Localized user interface.
+// Yerelleştirilmiş kullanıcı arayüzü.
 var tr = {
 	"off": "off",
 	"on": "on",
-	"syntax": "Syntax-Highlighting",
-	"lineno": "Line-Numbers",
+	"syntax": "Sözdizimi-Vurgulaması",
+	"lineno": "Satır-Numaraları",
 	"reset": "Reset Slide",
 	"format": "Format Source Code",
-	"kill": "Kill Program",
-	"run": "Run",
-	"toc": "Table of Contents",
-	"prev": "Previous",
-	"next": "Next",
-	"waiting": "Waiting for remote server...",
-	"errcomm": "Error communicating with remote server.",
+	"kill": "Program'ı Öldür",
+	"run": "Çalıştır",
+	"toc": "İçerik Tablosu",
+	"prev": "Geri",
+	"next": "İleri",
+	"waiting": "Sunucu bekleniyor...",
+	"errcomm": "Sunucu iletişiminde hata.",
 };

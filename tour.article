@@ -556,7 +556,7 @@ Arayüz tipinin herhangi bir değeri metodarı gerçekleyen değerlerden herhang
 
 .play prog/interfaces.go
 
-* Interfaces are satisfied implicitly
+* Arayüzler
 
 Bir tip, arayüzü, gerçeklenen metodları kullanarak gerçekler. /* çok kötü bir çeviri oldu üzerinde düşünmek gerek 
 
