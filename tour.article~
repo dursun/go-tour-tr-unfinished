@@ -3,19 +3,19 @@ Go Turu
 The Go Authors
 http://golang.org
 
-# Bu dosya içerisinde #appengine komutuyla başlayan
-# satırlar var. Bu satırlar tur içeriği, bir App Engine
-# uygulaması olarak yüklendiğinde işe yarar.
-# Ayrıca, #appengine satırının arkasına gelen boş olmayan
-# satırlar saklanacaktır. Bu App Engine'ın özel-içeriğinin
-# değiştirilebilmesiyle alakalı bir durum.
-# Örneğin, bu paragraf
+# Throughout this file are a series of lines that begin with
+# the string "#appengine: ". These lines are included in
+# the tour content when deployed as an App Engine app.
+# Furthermore, a single non-blank line that immediately follows
+# a run of "#appengine: " lines will be hidden. This is so that
+# App Engine-specific content may replace existing content.
+# For example, this paragraph
 # 	We are running
 # 	#appengine: on App Engine.
 # 	locally.
 # 	Yay!
-# App Engine'da "We are running on App Engine. Yay!" şeklinde okunurken,
-# diğer durumlarda "We are running locally. Yay!" şeklinde okunur.
+# reads as "We are running on App Engine. Yay!" on App Engine,
+# and "We are running locally. Yay!" otherwise.
 
 * Merhaba, 世界
 
