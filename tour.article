@@ -1,6 +1,6 @@
 Go Turu
 
-The Go Authors
+Go Yazarları Sunar
 http://golang.org
 
 # Bu dosya içerisinde #appengine komutuyla başlayan
@@ -306,7 +306,7 @@ or
 
 .play prog/the-new-function.go
 
-# TODO(campoy): Arrays section
+# TODO(campoy): Dizilerin bölümü
 
 * Dilimler
 
@@ -359,7 +359,7 @@ Böyle dilimlerin uzunluk ve kapasite değerleri 0'dır.
 
 .play prog/nil-slices.go
 
-# TODO(campoy): Appending to slices section
+# TODO(campoy): Dilimler bölümüne ekleme 
 
 * Erim
 
