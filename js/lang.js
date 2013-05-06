@@ -5,7 +5,7 @@ var tr = {
 	"syntax": "Sözdizimi-Vurgulaması",
 	"lineno": "Satır-Numaraları",
 	"reset": "Slaytı Resetle",
-	"format": "Format Source Code",
+	"format": "Kaynak Kodu Formatla",
 	"kill": "Program'ı Öldür",
 	"run": "Çalıştır",
 	"toc": "İçerik Tablosu",
