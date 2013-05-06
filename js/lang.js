@@ -4,7 +4,7 @@ var tr = {
 	"on": "on",
 	"syntax": "Sözdizimi-Vurgulaması",
 	"lineno": "Satır-Numaraları",
-	"reset": "Reset Slide",
+	"reset": "Slaytı Resetle",
 	"format": "Format Source Code",
 	"kill": "Program'ı Öldür",
 	"run": "Çalıştır",
