@@ -68,7 +68,7 @@ Bu kod grupları import ifadesini parantezlenmiş ifadenin içine aktarırlar. A
 
 	import "fmt"
 	import "math"
-ancak karışıklığı önlemek için genellikle parantezler içerisinde ki düzen kullanılır.
+ancak karışıklığı önlemek için genellikle parantezler içerisindeki düzen kullanılır.
 
 .play prog/imports.go
 
