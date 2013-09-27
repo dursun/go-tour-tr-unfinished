@@ -68,7 +68,7 @@ Bu kod grupları import ifadesini parantezlenmiş ifadenin içine aktarırlar. A
 
 	import "fmt"
 	import "math"
-ancak karışıklığı önlemek için genellikle diğer form kullanılır.
+ancak karışıklığı önlemek için genellikle parantezler içerisinde ki düzen kullanılır.
 
 .play prog/imports.go
 
@@ -98,7 +98,7 @@ Tip tanımlamasının değişken adından _sonra_ yapıldığına dikkat edin!
 
 * Fonksiyonlar
 
-Ardışık gelen 2 ya da daha fazla parametre aynı tipi paylaşıyorsa, tip adını en sona yazarak tanımlama yapabiliriz.
+Ardışık fonksiyon parametreleri aynı tipi paylaşıyorsa, tip adını en sona yazarak tanımlama yapabiliriz.
 
 Bu örnekte,
 
@@ -141,7 +141,7 @@ Eğer bir ilklendirme mevcut ise, tip tanımlaması atlanabilir;
 değişken ilklendirme değerinin tipini alacaktır.
 
 
-Bir var ifadesi tanımlayıcı içerebilir, her değişkene bir tane.
+Bir `var` ifadesi, her değişken için birer tane tanımlayıcı içerebilir.
 
 Eğer bir tanımlayıcı mevcut ise, tip atlanabilir; değişken tanımlayıcısının tipini alacaktır.
 
@@ -179,9 +179,9 @@ Go'nun basit tipleri şunlardır
 
 * Sabitler
 
-Sabitler de yapısal olarak değişkenler gibidir ama const anahtar kelimesi ile kullanılırlar.
+Sabitlerde değişkenler ile aynı şekilde tanımlanır ancak sabitler tanımlanırken `const` anahtar kelimesi kullanılır.
 
-Sabitler, karakter, dizgi, boolean, ya da sayısal değerler alabilir.
+Sabitler; karakter, dizgi, boolean, ya da sayısal değerler alabilir.
 
 .play prog/constants.go
 
@@ -197,7 +197,7 @@ Tipi olmayan bir sabit kaynağının ihtiyaç duyduğu tipi alır.
 
 * For
 
-Go dilinde sadece `for` döngüsü mevcuttur.
+Go dilinde döngü yapısı olarak sadece `for` mevcuttur.
 
 `for` döngüsü C ya da Java'dakiyle benzer yapıdadır, ancak `(`)` kısmı (parantezler) kullanılmaz (opsiyonel değil) 
 
