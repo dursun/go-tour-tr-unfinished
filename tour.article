@@ -21,9 +21,9 @@ http://golang.org
 
  [[http://golang.org/][Go programlama dili ]] turuna hoş geldiniz.
 
-Turumuz 3 bölümden oluşmaktadır ve her bölümün sonunda bir dizi alıştırmayı tamamlamanız bekleniyor.
+Turumuz 3 bölümden oluşmaktadır ve her bölümün sonunda bir dizi alıştırmayı tamamlamanız beklenmektedir.
 
-Turumuz etkileşimlidir. Programı uzak sunucu üzerinde derleyip, çalıştırmak için "Çalıştır"   butonuna tıklayın (ya da Shift-Enter tuşlayın) kod derlenip, program
+Turumuz etkileşimlidir. Programı uzak sunucu üzerinde derleyip, çalıştırmak için "Çalıştır" butonuna tıklayın (ya da Shift-Enter tuşlayın) kod derlenip, program
 #appengine: uzak sunucuda
 kendi bilgisayarınızda
 çalıştırılacak.
