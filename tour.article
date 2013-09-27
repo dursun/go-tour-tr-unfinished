@@ -121,7 +121,7 @@ Bir fonksiyon herhangi bir sayıda sonuç döndürebilir.
 * İsimlendirilmiş sonuçlar
 
 Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar birden fazla sonuç ("result") parametresi alabilir. Sonuçlar da değişken gibi isimlendirilebilir
-ve o şekilde davrabilir.
+ve o şekilde davranabilir.
 
 Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` ifadesi sonuçların geçerli değerini döndürecektir.
 .play prog/named-results.go
