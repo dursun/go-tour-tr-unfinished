@@ -23,7 +23,7 @@ http://golang.org
 
 Turumuz 3 bölümden oluþmaktadýr ve her bölümün sonunda bir dizi alýþtýrmayý tamamlamanýz bekleniyor.
 
-Turumuz etkileþimlidir. Programý uzak sunucu üzerinde derleyip, çalýþtýrmak için "Run"   butonuna týklayýn (ya da Shift-Enter tuþlayýn) kod derlenip, program
+Turumuz etkileþimlidir. Programý uzak sunucu üzerinde derleyip, çalýþtýrmak için "Çal¿¿t¿r"   butonuna týklayýn (ya da Shift-Enter tuþlayýn) kod derlenip, program
 #appengine: uzak sunucuda
 kendi bilgisayarýnýzda
 çalýþtýrýlacak.
@@ -34,7 +34,7 @@ Sonuç kodun aþaðýsýnda gösterilecek.
 
 Programý düzenleyip yeniden çalýþtýrýn.
 
-Ýlerlemeye hazýr olduðunuzda "Next" butonuna týklayýn ya da PageDown tuþlayýn.
+Ýlerlemeye hazýr olduðunuzda "¿leri" butonuna týklayýn ya da PageDown tuþlayýn.
 .play prog/hello.go
 
 * Go lokal
@@ -48,7 +48,7 @@ Turu diðer dillerle de deneyebilirsiniz:
 - [[http://go-tour-ro.appspot.com/][Romanian - Româna]]
 - [[http://go-tour-zh.appspot.com/][Chinese — ???]]
 
-Devam etmek için "Next" butonuna týklayýn ya da Page Down tuþlayýn.
+Devam etmek için "¿leri" butonuna týklayýn ya da Page Down tuþlayýn.
 
 * Paketler
 
