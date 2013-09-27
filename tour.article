@@ -78,7 +78,7 @@ Bir paketi içe aktardıktan sonra, sahip olduğu isimleri de aktarabilirsiniz.
 
 Go'da, dışa aktarılmış bir isim büyük harf ile başlar.
 
-Tıpkı `FOO` gibi `Foo` da dışa aktarılmış bir isimdir. `foo` dışa aktarılmış bir isim değildir.
+Tıpkı `FOO` gibi `Foo` da dışa aktarılmış bir isimdir. `foo` ise dışa aktarılmış bir isim değildir.
 
 Kodu çalıştırmayı denedikten sonra `math.pi` ifadesini <code>math.Pi</code> şeklinde değiştirip yeniden çalıştırın.
 
@@ -179,7 +179,7 @@ Go'nun basit tipleri şunlardır
 
 * Sabitler
 
-Sabitler de değişkenler gibidir ama const anahtar kelimesi ile kullanılırlar.
+Sabitler de yapısal olarak değişkenler gibidir ama const anahtar kelimesi ile kullanılırlar.
 
 Sabitler, karakter, dizgi, boolean, ya da sayısal değerler alabilir.
 
