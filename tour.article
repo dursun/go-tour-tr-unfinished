@@ -64,7 +64,7 @@ Geleneksel olarak, paket isimleri import yolunun son elementi ile isimlendirilir
 
 * İçe Aktarımlar
 
-Bu kod grupları import ifadesini parantezlenmiş ifadenin içine aktarırlar. Ayrıca çoklu import ifadeleri de kullanabilirsiniz:
+Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, "factored" import deyimi şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
 
 	import "fmt"
 	import "math"
@@ -80,7 +80,7 @@ Go'da, dışa aktarılmış bir isim büyük harf ile başlar.
 
 Tıpkı `FOO` gibi `Foo` da dışa aktarılmış bir isimdir. `foo` ise dışa aktarılmış bir isim değildir.
 
-Kodu çalıştırmayı denedikten sonra `math.pi` ifadesini <code>math.Pi</code> şeklinde değiştirip yeniden çalıştırın.
+Kodu çalıştırmayı denedikten sonra "`math.pi`"yi  <code>math.Pi</code> şeklinde değiştirip yeniden çalıştırın.
 
 .play prog/exported-names.go
 
@@ -92,7 +92,7 @@ Bu örnekte, `add` fonksiyonu `int` tipinde 2 parametre alıyor.
 
 Tip tanımlamasının değişken adından _sonra_ yapıldığına dikkat edin!
 
-(Tiplerin neden buna ihtiyaç duydukları hakkında daha fazla bilgi için, [[[http://golang.org/doc/articles/gos_declaration_syntax.html][buraya]] bakın makale Go'nun "syntax ifadesi"ndendir.)
+(Tiplerin neden buna ihtiyaç duydukları hakkında daha fazla bilgi için, [[[http://golang.org/doc/articles/gos_declaration_syntax.html][buraya]] bakın makale Go'nun "syntax açıklaması"ndandır.)
 
 .play prog/functions.go
 
@@ -123,35 +123,35 @@ Bir fonksiyon herhangi bir sayıda sonuç döndürebilir.
 Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar birden fazla sonuç ("result") parametresi alabilir. Sonuçlar da değişken gibi isimlendirilebilir
 ve o şekilde davranabilir.
 
-Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` ifadesi sonuçların geçerli değerini döndürecektir.
+Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` deyimi sonuçların geçerli değerini döndürecektir.
 .play prog/named-results.go
 
 * Değişkenler
 
-`var` ifadesi ile değişkenleri tanımlarız;
+`var` deyimi ile değişkenleri tanımlarız;
 tıpkı fonksiyon argümanları gibi, tip tanımlaması sonda yapılır.
 
 .play prog/variables.go
 
 * Değişkenler-İlklendirme
 
-Bir `var` ifadesi her değişken için bir ilklendirme değeri içerebilir.
+Bir `var` deyimi, her değişken için bir ilklendirme değeri içerebilir.
 
 Eğer bir ilklendirme mevcut ise, tip tanımlaması atlanabilir;
-değişken ilklendirme değerinin tipini alacaktır.
+değişken, ilklendirme değerinin tipini alacaktır.
 
 
-Bir `var` ifadesi, her değişken için birer tane tanımlayıcı içerebilir.
+Bir `var` deyimi, her değişken için birer tane ilklendirici içerebilir.
 
-Eğer bir tanımlayıcı mevcut ise, tip atlanabilir; değişken tanımlayıcısının tipini alacaktır.
+Eğer bir ilklendirici mevcut ise, tip atlanabilir; değişken ilklendircisinin tipini alacaktır.
 
 .play prog/variables-with-initializers.go
 
-* Kısa atama ifadeleri
+* Kısa atama bildirimleri 
 
-Bir fonksiyon içerisinde, `var` ifadesinin yerine `:=` yapısı kullanılabilir .
+Bir fonksiyon içerisinde, `var` yerine `:=` kısa ataması kullanılabilir .
 
-(Fonksiyonun dışında, her yapı bir anahtar kelime ile başlar ve `:=` yapısını kullanmak mümkün değildir.)
+(Fonksiyonun dışında, her yapı bir anahtar kelime ile başlar ve `:=` kısa atamasını kullanmak mümkün değildir.)
 
 .play prog/short-variable-declarations.go
 
@@ -207,7 +207,7 @@ bunun yanında `{`}` kısmının kullanılması şarttır.
 
 * For devamı
 
-Tıpkı C ve Java'daki gibi, ilk ve son ifadeleri boş bırakabilirsiniz.
+Tıpkı C ve Java'daki gibi, ilk ve son deyimleri boş bırakabilirsiniz.
 
 .play prog/for-continued.go
 
@@ -233,11 +233,11 @@ Eğer döngü koşulunu belirtmezseniz, sonsuz döngü oluşacaktır.
 
 * Kısa atama ile if
 
-`for`'daki gibi, `if` ifadesi de koşuldan önce çalıştırılabilmesi için kısa atama ile başlayabilir.
+`for`'daki gibi, `if` deyimi de koşuldan önce çalıştırılabilmesi için kısa atama ile başlayabilir.
 
-Değişkenlerin geçerliliği `if` ifadesinin kapsamı içindedir.
+Değişkenlerin geçerliliği `if` koşulunun kapsamı içindedir.
 
-(Sondaki return ifadesinde `v` kullanmayı deneyin.)
+(Sondaki return deyiminde `v` kullanmayı deneyin.)
 
 .play prog/if-with-a-short-statement.go
 
@@ -265,7 +265,7 @@ Daha fazla ya da daha az yineleme için buraya göz atın.
 
 [[http://golang.org/pkg/math/#Sqrt][`Math.sqrt`'ye]] ne kadar yakınsınız?
 
-İpucu: bir kayan nokta değerini (floating point value)ifade etmek ve tanımlamak için kayan nokta söz dizimi verin ya da bir dönüştürme uygulayın:
+İpucu: bir kayan nokta değerini (floating point value) ifade etmek ve tanımlamak için kayan nokta söz dizimi verin ya da bir dönüştürme uygulayın:
 
 	z := float64(1)
 	z := 1.0
@@ -276,7 +276,7 @@ Daha fazla ya da daha az yineleme için buraya göz atın.
 
 Bir struct (yapı) alanların toplamasıdır.
 
-(Ve bir `type` ifadesi bekleneni gerçekleştirir.)
+(Ve bir `type` bildirimi bekleneni gerçekleştirir.)
 
 .play prog/structs.go
 
@@ -310,7 +310,7 @@ Yapısal sabitler, henüz tahsis edilmiş yapı değerini, alanına göre listel
 
 	var t *T = new(T)
 
-or
+ya da
 
 	t := new(T)
 
@@ -332,7 +332,7 @@ Bir dilim, aynı diziyi işaret eden yeni bir dilim değeri oluşturmak için ye
 
 	s[lo:hi]
 
-ifadesi `"lo"`dan `"hi-1"`i de kapsayan elemanları değerlendirir. Buna göre
+kod parçası, `"lo"`dan `"hi-1"`i de kapsayan elemanları değerlendirir. Buna göre
 
 	s[lo:lo]
 
@@ -381,7 +381,7 @@ Böyle dilimlerin uzunluk ve kapasite değerleri 0'dır.
 
 İndisi ya da değeri `_` ataması ile atlayabilirsiniz.
 
-Eğer yalnızca indisi istiyorsanız, “, value” ifadesini tamamen çıkarabilirsiniz.
+Eğer yalnızca indisi istiyorsanız, “, value” kısmını tamamen çıkarabilirsiniz.
 
 .play prog/range-continued.go
 
@@ -391,7 +391,7 @@ Eğer yalnızca indisi istiyorsanız, “, value” ifadesini tamamen çıkarabi
 
 Programı çalıştırdığınızda, sizin fotoğrafınızı gösterecek, tamsayıları griölçekli (*/uygun çeviri değil*/, maviölçekli) değerler olarak çıkaracaktır.
 
-Resim seçimi size ait. Kullanacağınız fonksiyonlar `x^y`, `(x+y)/2` ve `x*y` ifadelerini içermektedir.
+Resim seçimi size ait. Kullanacağınız fonksiyonlar `x^y`, `(x+y)/2` ve `x*y` işlemlerini içermektedir.
 
 (`[][]uint8` içerisindeki her "`[]uint8`"i ayırmak için döngü kullanmanız gerekmektedir.)
 
@@ -506,7 +506,7 @@ eğer`i==0` ise `f`'yi çağırmaz.)
 
 * Koşulsuz Anahtarlama
 
-Koşul belirtilmemiş bir "switch" ifadesi `"switch`true"` ifadesi ile aynı işi görür.
+Koşul belirtilmemiş bir "switch", bir `"switch`true"` ile aynı işi görür.
 
 Ve uzun "if-then-else" zincirleri yerine kullanılabilecek, güzel bir yöntemdir.
 
@@ -550,11 +550,11 @@ Henüz, biri `*Vertex` işaretçi tipinde ve diğeri ise `MyFloat` değer tipind
 
 İşaretçi alıcısı kullanmamızın iki nedeni var. Birincisi, her metod çağrısında, değer kopyalamasından kaçınmak (eğer tipi "large struct" ise daha verimli). İkincisi, metodun işaretçiler sayesinde değeri güncelleyebimesidir.
 
-`*Vertex` yerine `Vertex`'i alıcı olarak kullanmak için `Abs` ve `Scale` metod ifadelerini değiştirmeyi deneyin.
+`*Vertex` yerine `Vertex`'i alıcı olarak kullanmak için, `Abs` ve `Scale` metodlarının bildirimlerini değiştirmeyi deneyin.
 
 `v` bir `Vertex` olduğunda, `Scale` Metodunun bir işlevi yoktur. `Scale`, `v`'yi dönüştürür. `v` bir değer olduğunda (işaretçi-değil), metod onu `Vertex`'in bir kopyası olarak görecek ve asıl değeri dönüştürmeyecektir.
 
-`Abs`  diğer bir şekilde de çalışır. Yalnızca `v`'yi okur. Burada asıl ifadeyi okumasıyla kopyalanmış ifadeyi okuması (işaretçi vasıtasıyla) arasında bir fark yoktur.
+`Abs`  diğer bir şekilde de çalışır. Yalnızca `v`'yi okur. Burada asıl değeri okumasıyla kopyalanmış değeri okuması (işaretçi vasıtasıyla) arasında bir fark yoktur.
 
 .play prog/methods-with-pointer-receivers.go
 
@@ -767,7 +767,7 @@ Tampon boş olduğunda ise bloğu temin eder. /* daha düzgün bir çeviri öner
 
 .play prog/buffered-channels.go
 
-* Range and Close
+* Range ve Close
 
 Gönderici bir kanalı daha fazla değer alınmaması gerektiğinde
 `close` kodu ile kapatabilir. Alıcılar, alıcı ifadeye ikinci bir parametre ataması yaparak
@@ -790,9 +790,9 @@ maksadıyla yapılır, tıpkı bir "`range`" döngüsünü sonlandırmak gibi.
 
 * Seçmek
 
-"`select`" ifadesi gorutinin birden fazla iletişim işleminde beklemesine izin verir.
+"`select`" deyimi gorutinin birden fazla iletişim işleminde beklemesine izin verir.
 
-Bir `select` "case"lerinden biri çalıştırılabilene kadar tıkalıdır, uygun duruma geldiğinde
+Bir `select`, "case"lerinden biri çalıştırılabilene kadar tıkalıdır, uygun duruma geldiğinde
 "case"i çalıştırır.  Eğer birden fazla çalıştırılabilir "case" varsa seçimi rastgele gerçekleştirir.
 
 .play prog/select.go
