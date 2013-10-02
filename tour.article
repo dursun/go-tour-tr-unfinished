@@ -64,7 +64,7 @@ Geleneksel olarak, paket isimleri import yolunun son elementi ile isimlendirilir
 
 * İçe Aktarımlar
 
-Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, "factored" import deyimi şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
+Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, parçalara ayrılmış import deyimleri şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
 
 	import "fmt"
 	import "math"
