@@ -21,21 +21,24 @@ http://golang.org
 
  [[http://golang.org/][Go programlama dili ]] turuna hoş geldiniz.
 
-Turumuz 3 bölümden oluşmaktadır ve her bölümün sonunda bir dizi alıştırmayı tamamlamanız beklenmektedir.
+Turumuz 3 bölümden oluşmaktadır: basit kavramlar, metodlar ve arayüzler, ve eşzamanlılık. 
+
+Her bölümün sonunda bir dizi alıştırmayı tamamlamanız beklenmektedir.
 
 Turumuz etkileşimlidir. Programı uzak sunucu üzerinde derleyip, çalıştırmak için "Çalıştır" butonuna tıklayın (ya da Shift-Enter tuşlayın) kod derlenip, program
 #appengine: uzak sunucuda
 kendi bilgisayarınızda
 çalıştırılacak.
-
 Sonuç kodun aşağısında gösterilecek.
 
 Örnek programlar sizi Go'nun farklı yönleriyle tanıştırarak, gelecekteki tecrübeleriniz için ilk adımları oluşturacak.
 
 Programı düzenleyip yeniden çalıştırın.
 
-İlerlemeye hazır olduğunuzda "İleri" butonuna tıklayın ya da PageDown tuşlayın.
-.play prog/hello.go
+İlerlemeye hazır olduğunuzda aşağıdaki sağ oka tıklayın ya da PageDown tuşlayın.
+Aynı zamanda gezinmek için sayfanın üzerinde, "Go" bayrağının altında bulunan menüyü de kullanabilirsiniz.
+
+.play prog/tour/hello.go
 
 * Go lokal
 
@@ -43,12 +46,32 @@ Turu diğer dillerle de deneyebilirsiniz:
 
 - [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
 - [[http://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[http://go-tour-he.appspot.com/][Hebrew — ????????]]
-- [[http://go-tour-jp.appspot.com/][Japanese — ???]]
+- [[http://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-fr.appspot.com/][French - Français]]
+- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
+- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[http://go-tour-ro.appspot.com/][Romanian - Româna]]
-- [[http://go-tour-zh.appspot.com/][Chinese — ???]]
+- [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 
 Devam etmek için "İleri" butonuna tıklayın ya da Page Down tuşlayın.
+
+#appengine: * Go Playground
+#appengine: 
+#appengine: Bu tur [[http://golang.org/][golang.org]] sunucuları üzerinde çalışan
+#appengine: [[http://play.golang.org/][Go Playground]] web servisi üzerine kurulmuştur.
+#appengine: 
+#appengine: Bu servis, Go programını, bir sanal alan içerisine alıp, derler, bağlar ve çalıştırır.
+#appengine: ve çıktıyı döndürür.
+#appengine: 
+#appengine: Playground içinde çalıştırılabilen programların kısıtlamaları var:
+#appengine: 
+#appengine: - Playground standart kütüphaneyi, bazı eksikliklerle, kullanabilir; en önemli eksiklikler ağ ve dosya sistemi erişimi. Bu nedenle, playground programının dış dünyayla tek iletişimi "standard output" ve "standard error"dur.
+#appengine: - Playground'ta zaman 2009-11-10 23:00:00 UTC'de başlar (bu değerin önemi okuyucu için bir alıştırma niteliğinde olmasıdır). Bu programlara deterministik çıkışlar vererek önbelleğe alınmalarını kolaylaştırır.
+#appengine: - Yürütme zamanı, CPU, bellek kullanımında da kısıtlamalar var ve program tek bir iş parçacığı("thread") içerisinde çalışacak şekilde kısıtlanmıştır (ama birçok gorutini kullanabilir).
+#appengine:
+#appengine: Playground Go'nun son kararlı sürümünü kullanır.
+#appengine: 
+#appengine: .play prog/tour/sandbox.go
 
 * Paketler
 
@@ -56,21 +79,25 @@ Her Go programı paketlerden oluşur.
 
 Programlar `main` paketinde çalışmaya başlar.
 
-Bu örnek program `"fmt"` ve `"math"` paketlerini import yolu ile kullanıyor.
+Bu örnek program `"fmt"` ve `"math/rand"` paketlerini import yolu ile kullanıyor.
 
-Geleneksel olarak, paket isimleri import yolunun son elementi ile isimlendirilir.
+Geleneksel olarak, paket isimleri import yolunun son elementi ile isimlendirilir. Örneğin, `"math/rand"` paketi, `package`rand`deyimi ile başlayan dosyaları kapsar.
 
-.play prog/packages.go
+#appengine: *Not:* Bu programların yürütüldüğü ortam belirleyicidir,
+#appengine: yani `rand.Intn` her zaman aynı sayıyı döndürecektir.
+#appengine: 
+#appengine: (Farklı bir sayı görmek için, sayı üreticisini besleyin; [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]]'e göz atın.)
+
+.play prog/tour/packages.go
 
 * İçe Aktarımlar
 
-Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, parçalara ayrılmış import deyimleri şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
+Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, parçalara ayrılmış import deyimi şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
 
 	import "fmt"
 	import "math"
-ancak karışıklığı önlemek için genellikle parantezler içerisindeki düzen kullanılır.
 
-.play prog/imports.go
+.play prog/tour/imports.go
 
 * İçe Aktarılan İsimler
 
@@ -80,9 +107,9 @@ Go'da, dışa aktarılmış bir isim büyük harf ile başlar.
 
 Tıpkı `FOO` gibi `Foo` da dışa aktarılmış bir isimdir. `foo` ise dışa aktarılmış bir isim değildir.
 
-Kodu çalıştırmayı denedikten sonra "`math.pi`"yi  <code>math.Pi</code> şeklinde değiştirip yeniden çalıştırın.
+Kodu çalıştırmayı denedikten sonra "`math.pi`"yi  `math.Pi` şeklinde değiştirip yeniden çalıştırın.
 
-.play prog/exported-names.go
+.play prog/tour/exported-names.go
 
 * Fonksiyonlar
 
@@ -92,11 +119,11 @@ Bu örnekte, `add` fonksiyonu `int` tipinde 2 parametre alıyor.
 
 Tip tanımlamasının değişken adından _sonra_ yapıldığına dikkat edin!
 
-(Tiplerin neden buna ihtiyaç duydukları hakkında daha fazla bilgi için, [[[http://golang.org/doc/articles/gos_declaration_syntax.html][buraya]] bakın makale Go'nun "syntax açıklaması"ndandır.)
+(Tiplerin neden buna ihtiyaç duydukları hakkında daha fazla bilgi için, [[[http://golang.org/doc/articles/gos_declaration_syntax.html][buraya]] bakın makale Go'nun "sözdizimi açıklaması"ndandır.)
 
-.play prog/functions.go
+.play prog/tour/functions.go
 
-* Fonksiyonlar
+* Fonksiyonlar devamı
 
 Ardışık fonksiyon parametreleri aynı tipi paylaşıyorsa, tip adını en sona yazarak tanımlama yapabiliriz.
 
@@ -108,7 +135,7 @@ kod parçası aşağıdaki şekilde kısaltılmış;
 
 x, y int
 
-.play prog/functions-continued.go
+.play prog/tour/functions-continued.go
 
 * Çoklu sonuçlar
 
@@ -116,44 +143,37 @@ Bir fonksiyon herhangi bir sayıda sonuç döndürebilir.
 
 Örnekteki fonksiyon dizgi tipinde 2 sonuç döndürüyor.
 
-.play prog/multiple-results.go
+.play prog/tour/multiple-results.go
 
 * İsimlendirilmiş sonuçlar
 
-Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar birden fazla sonuç ("result") parametresi alabilir. Sonuçlar da değişken gibi isimlendirilebilir
-ve o şekilde davranabilir.
+Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar birden fazla sonuç ("result") parametresi alabilir. Sonuçlar da değişken gibi isimlendirilebilir ve o şekilde davranabilir.
 
 Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` deyimi sonuçların geçerli değerini döndürecektir.
-.play prog/named-results.go
+
+.play prog/tour/named-results.go
 
 * Değişkenler
 
-`var` deyimi ile değişkenleri tanımlarız;
-tıpkı fonksiyon argümanları gibi, tip tanımlaması sonda yapılır.
+`var` deyimi ile değişkenleri tanımlarız; tıpkı fonksiyon argümanları gibi, tip tanımlaması sonda yapılır.
 
-.play prog/variables.go
+.play prog/tour/variables.go
 
 * Değişkenler-İlklendirme
 
 Bir `var` deyimi, her değişken için bir ilklendirme değeri içerebilir.
 
-Eğer bir ilklendirme mevcut ise, tip tanımlaması atlanabilir;
-değişken, ilklendirme değerinin tipini alacaktır.
+Eğer bir ilklendirme mevcut ise, tip tanımlaması atlanabilir; değişken, ilklendirme değerinin tipini alacaktır.
 
-
-Bir `var` deyimi, her değişken için birer tane ilklendirici içerebilir.
-
-Eğer bir ilklendirici mevcut ise, tip atlanabilir; değişken ilklendircisinin tipini alacaktır.
-
-.play prog/variables-with-initializers.go
+.play prog/tour/variables-with-initializers.go
 
 * Kısa atama bildirimleri 
 
-Bir fonksiyon içerisinde, `var` yerine `:=` kısa ataması kullanılabilir .
+Bir fonksiyon içerisinde, `var` yerine `:=` kısa ataması kullanılabilir.
 
 (Fonksiyonun dışında, her yapı bir anahtar kelime ile başlar ve `:=` kısa atamasını kullanmak mümkün değildir.)
 
-.play prog/short-variable-declarations.go
+.play prog/tour/short-variable-declarations.go
 
 * Basit tipler
 
@@ -175,15 +195,17 @@ Go'nun basit tipleri şunlardır
 
 	complex64 complex128
 
-.play prog/basic-types.go
+.play prog/tour/basic-types.go
 
 * Sabitler
 
-Sabitlerde değişkenler ile aynı şekilde tanımlanır ancak sabitler tanımlanırken `const` anahtar kelimesi kullanılır.
+Sabitler de değişkenler ile aynı şekilde tanımlanır ancak sabitler tanımlanırken `const` anahtar kelimesi kullanılır.
 
 Sabitler; karakter, dizgi, boolean, ya da sayısal değerler alabilir.
 
-.play prog/constants.go
+Sabitler `:=` kısa atama ifadesi ile atanamazlar.
+
+.play prog/tour/constants.go
 
 * Sayısal Sabitler
 
@@ -193,7 +215,7 @@ Tipi olmayan bir sabit kaynağının ihtiyaç duyduğu tipi alır.
 
 `needInt(Big)` kodunu da eklemeyi deneyin.
 
-.play prog/numeric-constants.go
+.play prog/tour/numeric-constants.go
 
 * For
 
@@ -203,25 +225,25 @@ Go dilinde döngü yapısı olarak sadece `for` mevcuttur.
 
 bunun yanında `{`}` kısmının kullanılması şarttır.
 
-.play prog/for.go
+.play prog/tour/for.go
 
 * For devamı
 
 Tıpkı C ve Java'daki gibi, ilk ve son deyimleri boş bırakabilirsiniz.
 
-.play prog/for-continued.go
+.play prog/tour/for-continued.go
 
 * For, Go'nun "while"ı
 
 Bu durumda, noktalı virgülleri kullanmayabilirsiniz: C'deki `while`'ın karşılığı Go'da `for`'dur.
 
-.play prog/for-is-gos-while.go
+.play prog/tour/for-is-gos-while.go
 
-* Sonsuzluk
+* Forever
 
 Eğer döngü koşulunu belirtmezseniz, sonsuz döngü oluşacaktır.
 
-.play prog/forever.go
+.play prog/tour/forever.go
 
 * If
 
@@ -229,7 +251,7 @@ Eğer döngü koşulunu belirtmezseniz, sonsuz döngü oluşacaktır.
 
 (Tanıdık mı geldi?)
 
-.play prog/if.go
+.play prog/tour/if.go
 
 * Kısa atama ile if
 
@@ -239,13 +261,13 @@ Değişkenlerin geçerliliği `if` koşulunun kapsamı içindedir.
 
 (Sondaki return deyiminde `v` kullanmayı deneyin.)
 
-.play prog/if-with-a-short-statement.go
+.play prog/tour/if-with-a-short-statement.go
 
 * If ve else
 
 `if`'in içerisinde kısa atama ile atanan değişkenlerin kullanımı `else` bloklarında da mümkündür.
 
-.play prog/if-and-else.go
+.play prog/tour/if-and-else.go
 
 * Uygulama: Döngüler ve Fonksiyonlar
 
@@ -259,7 +281,7 @@ formülünü tekrarlayarak `Sqrt(x)` değerine yaklaşır.
 
 Başlangıç olarak, bu hesaplamayı 10 defa tekrar edin ve (1, 2, 3, ...) gibi çeşitli değerlerde cevaba ne kadar yaklaştığınızı görün.
 
-Daha sonra, döngü koşulunu, sonuç değeri değişmeyi bıraktığında (ya da çok küçük bir delta ile değiştiğinde) Döngünün duracağı şekilde biçimlendirin.
+Daha sonra, döngü koşulunu, sonuç değeri değişmeyi bıraktığında (ya da çok küçük bir delta ile değiştiğinde) döngünün duracağı şekilde biçimlendirin.
 
 Daha fazla ya da daha az yineleme için buraya göz atın.
 
@@ -270,7 +292,7 @@ Daha fazla ya da daha az yineleme için buraya göz atın.
 	z := float64(1)
 	z := 1.0
 
-.play prog/exercise-loops-and-functions.go
+.play prog/tour/exercise-loops-and-functions.go
 
 * Yapılar
 
@@ -278,13 +300,13 @@ Bir struct (yapı) alanların toplamasıdır.
 
 (Ve bir `type` bildirimi bekleneni gerçekleştirir.)
 
-.play prog/structs.go
+.play prog/tour/structs.go
 
 * Yapı Alanları
 
 Yapı alanları nokta kullanılarak çağrılır
 
-.play prog/struct-fields.go
+.play prog/tour/struct-fields.go
 
 * İşaretçiler
 
@@ -292,7 +314,7 @@ Go'nun işaretçileri var ama işaretçi aritmetiği yok.
 
 Yapı alanlarına bir yapı işaretçisi ile de erişilebilir. İşaretçi ile sağlanan bu dolaylı yol şeffaftır.
 
-.play prog/pointers.go
+.play prog/tour/pointers.go
 
 * Yapısal Sabitler
 
@@ -302,7 +324,7 @@ Yapısal sabitler, henüz tahsis edilmiş yapı değerini, alanına göre listel
 
 Özel `&` gösterimi yapısal bir sabite işaretçi tahsis eder.
 
-.play prog/struct-literals.go
+.play prog/tour/struct-literals.go
 
 * Yeni fonksiyon
 
@@ -314,9 +336,7 @@ ya da
 
 	t := new(T)
 
-.play prog/the-new-function.go
-
-# TODO(campoy): Dizilerin bölümü
+.play prog/tour/the-new-function.go
 
 * Dilimler
 
@@ -324,7 +344,7 @@ Bir dilim değerlerden oluşan bir diziyi işaret etmesinin yanında uzunluğunu
 
 `[]T`, `T` tipinden elemanları olan bir dilimdir.
 
-.play prog/slices.go
+.play prog/tour/slices.go
 
 * Dilim dilim dilimlemek
 
@@ -332,7 +352,7 @@ Bir dilim, aynı diziyi işaret eden yeni bir dilim değeri oluşturmak için ye
 
 	s[lo:hi]
 
-kod parçası, `"lo"`dan `"hi-1"`i de kapsayan elemanları değerlendirir. Buna göre
+ifadesi, `"lo"`dan, `"hi-1"`i de kapsayan elemanları değerlendirir. Buna göre
 
 	s[lo:lo]
 
@@ -342,7 +362,7 @@ dilimi boştur,
 
 dilimi ise bir elemana sahiptir.
 
-.play prog/slicing-slices.go
+.play prog/tour/slicing-slices.go
 
 * Dilim yaratmak
 
@@ -357,7 +377,7 @@ Kapasiteyi belirtmek için, `make`'e bir üçüncü argüman atayalım:
 	b = b[:cap(b)] // len(b)=5, cap(b)=5
 	b = b[1:]      // len(b)=4, cap(b)=4
 
-.play prog/making-slices.go
+.play prog/tour/making-slices.go
 
 * Nil dilimler
 
@@ -367,15 +387,13 @@ Böyle dilimlerin uzunluk ve kapasite değerleri 0'dır.
 
 (Dilimler hakkında daha fazla bilgi için: [[http://golang.org/doc/articles/slices_usage_and_internals.html] makalesini okuyun)
 
-.play prog/nil-slices.go
-
-# TODO(campoy): Dilimler bölümüne ekleme
+.play prog/tour/nil-slices.go
 
 * [Erim]("Range")
 
 `for` döngüsünün `range` formu ile bir dilim veya eşlem üzerinde dolaşılır.
 
-.play prog/range.go
+.play prog/tour/range.go
 
 * Range devamı
 
@@ -383,42 +401,40 @@ Böyle dilimlerin uzunluk ve kapasite değerleri 0'dır.
 
 Eğer yalnızca indisi istiyorsanız, “, value” kısmını tamamen çıkarabilirsiniz.
 
-.play prog/range-continued.go
+.play prog/tour/range-continued.go
 
 * Uygulama: Dilimler
 
-`"Pic"`i gerçekleyin. Fonksiyonunuz `dx`'in (8 bitlik işaretsiz tam sayılar) dilimi olan her bir eleman için, `dy` uzunluğunda bir dilim döndürmelidir.
-
-Programı çalıştırdığınızda, sizin fotoğrafınızı gösterecek, tamsayıları griölçekli (*/uygun çeviri değil*/, maviölçekli) değerler olarak çıkaracaktır.
+`"Pic"`i gerçekleyin. Fonksiyonunuz `dx`'in (8 bitlik işaretsiz tam sayılar) dilimi olan her bir eleman için, `dy` uzunluğunda bir dilim döndürmelidir. Programı çalıştırdığınızda, sizin fotoğrafınızı gösterecek, tamsayıları griölçekli (*/uygun çeviri değil*/, maviölçekli) değerler olarak çıkaracaktır.
 
 Resim seçimi size ait. Kullanacağınız fonksiyonlar `x^y`, `(x+y)/2` ve `x*y` işlemlerini içermektedir.
 
 (`[][]uint8` içerisindeki her "`[]uint8`"i ayırmak için döngü kullanmanız gerekmektedir.)
 
-(Tipler arasında dönüşüm yapmak için uint8(intValue) kullanın.)
+(Tipler arasında dönüşüm yapmak için `uint8(intValue)` kullanın.)
 
-.play prog/exercise-slices.go
+.play prog/tour/exercise-slices.go
 
 * Eşlemler
 
-Bir eşlem ("map") anahtarları değerlere eşler.
+Bir eşlem, ("map") anahtarları değerlere eşler.
 
 Eşlemler mutlaka `make` ile yaratılmalıdır (`new` ile değil) `nil` tipindeki bir eşlem boştur ve atanabilir değildir.
 
 
-.play prog/maps.go
+.play prog/tour/maps.go
 
 * Map değişmezleri
 
 Eşlem değişmezleri de yapı değişmezlerine benzer yapıdadır ancak anahtarlarla birlikte kullanılır.
 
-.play prog/map-literals.go
+.play prog/tour/map-literals.go
 
 * Map değişmezleri devamı
 
-Eğer üst-seviye tip yalnızca tip adı ise, onu değişmezin elemanları arasında görmezden gelebilirsiniz. /*kendime not daha uygun bir çeviri ara */
+Eğer üst-seviye tip yalnızca tip adı ise, onu değişmezin elemanları arasında görmezden gelebilirsiniz.
 
-.play prog/map-literals-continued.go
+.play prog/tour/map-literals-continued.go
 
 * Eşlemleri Değiştirme
 Eşlemimize ("map") bir eleman ekleyelim ya da varolan bir elemanı güncelleyelim  `m`:
@@ -437,15 +453,11 @@ Bir elemanı silelim:
 
 	elem, ok = m[key]
 
-Eğer `key`, `m` içindeyse, `ok`, `true` değerini alacaktır. Eğer değilse, `ok`, `false` değerini alacak ve `elem`,
-
-eşlemin eleman tipi için sıfır değerini alacaktır.
+Eğer `key`, `m` içindeyse, `ok`, `true` değerini alacaktır. Eğer değilse, `ok`, `false` değerini alacak ve `elem`, eşlemin eleman tipi için sıfır değerini alacaktır.
 
 Benzer şekilde, bir eşlemden okurken eğer anahtar mevcut değilse Sonuç, eşlemin eleman tipi için sıfır değerini alır.
 
-.play prog/mutating-maps.go
-
-# TODO(campoy): Range on maps section
+.play prog/tour/mutating-maps.go
 
 * Uygulama: Eşlemler
 
@@ -453,37 +465,37 @@ Benzer şekilde, bir eşlemden okurken eğer anahtar mevcut değilse Sonuç, eş
 
 "[[http://golang.org/pkg/strings/#Fields][strings.Fields]]"a bakmanızda fayda var.
 
-.play prog/exercise-maps.go
+.play prog/tour/exercise-maps.go
 
 * Fonksiyon değerleri
 
 Fonksiyonlar da birer değerdir.
 
-.play prog/function-values.go
+.play prog/tour/function-values.go
 
 * Fonksiyon - kaplamlar
 
-Fonksiyonlar kaplamlarla ("closure") doludur.
+Go fonksiyonları kaplam ("closure") olabilirler. Kaplam, kendi bloğunun dışından değişkenleri çeken bir fonksiyon değeridir. Fonksiyon çekilen değerlere erişip, atama yapabilir; bu örnekte fonksiyon
 
 `adder` fonksiyonu bir kaplam döndürür. Her kaplam kendi `sum` değişkenini saklar.
 
-.play prog/function-closures.go
+.play prog/tour/function-closures.go
 
 * Uygulama: Fibonacci closure
 
 Hadi fonksiyonlarla biraz eğlenelim.
 
-`Fibonacci` uygulaması ardışık Fibonacci sayılarını döndüren bir fonksiyonu, kaplamı döndürür.
+Öyle bir `fibonacci` fonksiyonu tasarlayın ki; ardışık fibonacci sayıları döndüren bir fonksiyon (kaplam) döndürsün.
 
-.play prog/exercise-fibonacci-closure.go
+.play prog/tour/exercise-fibonacci-closure.go
 
 * Anahtarlama
 
 Muhtemelen `"switch"` yapısının ne şekilde çalıştığı hakkında biraz bilginiz vardır.
 
-`"fallthrough durumu"` oluşmaması halinde, uygun case gövdesi çalışacaktır . /* çevirimin uygunluğu hakkında şüphelerim var */
+`"fallthrough durumu"` oluşmaması halinde, uygun case gövdesi çalışacaktır.
 
-.play prog/switch.go
+.play prog/tour/switch.go
 
 * Anahtarlama değerlendirme sırası
 
@@ -498,11 +510,10 @@ Muhtemelen `"switch"` yapısının ne şekilde çalıştığı hakkında biraz b
 
 eğer`i==0` ise `f`'yi çağırmaz.)
 
-#appengine: *Note:* Time in the Go playground always appears to start at
-#appengine: 2009-11-10 23:00:00 UTC, a value whose significance is left as an
-#appengine: exercise for the reader.
+#appengine: *Not:* Go Playground'ta zaman her daim 2009-11-10 23:00:00 UTC'den başlar, 
+#appengine: bu değerin önemi okuyucu için bir alıştırma niteliğinde olmasıdır.
 
-.play prog/switch-evaluation-order.go
+.play prog/tour/switch-evaluation-order.go
 
 * Koşulsuz Anahtarlama
 
@@ -510,7 +521,7 @@ Koşul belirtilmemiş bir "switch", bir `"switch`true"` ile aynı işi görür.
 
 Ve uzun "if-then-else" zincirleri yerine kullanılabilecek, güzel bir yöntemdir.
 
-.play prog/switch-with-no-condition.go
+.play prog/tour/switch-with-no-condition.go
 
 * Gelişmiş Uygulama: Karmaşık küp kökler
 
@@ -522,9 +533,11 @@ formülünü tekrarlayarak sonuca gider.
 
 Algoritmanın çalıştığından emin olmak için, 2'nin küp kökünü bulun. `math/cmplx` paketinin içinde bir [[http://golang.org/pkg/math/cmplx/#Pow][Pow]] fonksiyonu bulunmaktadır.
 
-.play prog/advanced-exercise-complex-cube-roots.go
+.play prog/tour/advanced-exercise-complex-cube-roots.go
 
 * Metodlar ve Arayüzler
+
+İlerleyen slaytlar metodlar ve arayüzleri, nesne tanımlamaları ve onların davranış biçimlerini içeren yapıları kapsıyor. 
 
 * Metodlar
 
@@ -532,7 +545,7 @@ Go dilinde sınıf yapısı bulunmamasına karşın "struct" tiplerinde metod ta
 
 _Metod_alıcısı_ , `func` anahtar sözcüğü ve metod ismi arasında kendi argüman listesinde bulunur.
 
-.play prog/methods.go
+.play prog/tour/methods.go
 
 * Metodlar devamı
 
@@ -540,7 +553,7 @@ Hatta sadece "struct"larda değil, metodunuzu paketinizde tanımladığınız _h
 
 Başka bir paketten alacağınız bir tipte ya da temel bir tipte metod tanımlayamazsınız.
 
-.play prog/methods-continued.go
+.play prog/tour/methods-continued.go
 
 * İşaretçi alıcılarıyla metodlar
 
@@ -556,7 +569,7 @@ Henüz, biri `*Vertex` işaretçi tipinde ve diğeri ise `MyFloat` değer tipind
 
 `Abs`  diğer bir şekilde de çalışır. Yalnızca `v`'yi okur. Burada asıl değeri okumasıyla kopyalanmış değeri okuması (işaretçi vasıtasıyla) arasında bir fark yoktur.
 
-.play prog/methods-with-pointer-receivers.go
+.play prog/tour/methods-with-pointer-receivers.go
 
 * Arayüzler
 
@@ -564,45 +577,39 @@ Bir arayüz ("interface") tipi bir dizi metod tarafından belirlenir.
 
 Arayüz tipinin herhangi bir değeri metodarı gerçekleyen değerlerden herhangi birini tutabilir.
 
-.play prog/interfaces.go
+.play prog/tour/interfaces.go
 
 * Arayüzler
 
-Bir tip, arayüzü, gerçeklenen metodları kullanarak gerçekler. /* çok kötü bir çeviri oldu üzerinde düşünmek gerek
+Bir tip, arayüzü, gerçeklenen metodları kullanarak gerçekler.
 
 _Niyetin_aşikar_bir_açıklaması_yoktur._ /* bu çeviriyi uygun bulmamakla birlikte daha düzgün bir çeviri önerisi sunamıyorum */
 
-Soyutlanmış arayüzler, uygulama paketlerini arayüzlerin tanımlandığı
+Soyutlanmış arayüzler, uygulama paketlerini, arayüzlerin tanımlandığı paketlerden ayırırlar: birbirlerine bağlı da değillerdir.
 
-paketlerden ayırırlar: birbirlerine bağlı da değillerdir.
-
-Aynı zamanda –doğru terimi bulamadım- arayüzlerin tanımlanması için teşvik eder, çünkü
-
-her uygulamayı tek tek bulup yeni bir arayüz ismiyle etiketlemek zorunluluğunu ortadan kaldırır.
+Aynı zamanda duyarlı arayüzlerin tanımlanması için teşvik eder, çünkü her uygulamayı tek tek bulup yeni bir arayüz ismiyle etiketlemek zorunluluğunu ortadan kaldırır.
 
 [[http://golang.org/pkg/io/][Package io]], `Reader` ve `Writer`'ı otomatik olarak tanımlar.
 
-.play prog/interfaces-are-satisfied-implicitly.go
+.play prog/tour/interfaces-are-satisfied-implicitly.go
 
 * Hatalar
 
-Kendini hata dizgisi olarak tarif edebilen her şey bir "hata"dır.
+Kendini hata dizgisi olarak tarif edebilen her şey bir "hata"dır. Bu fikir önceden tasarlanmış, yerleşik arayüz tipinde, `error`'da, dizgi döndüren, kendi tekil metoduyla (`Error`) saklanır,:
 
-Bu fikir önceden tasarlanmış, yerleşik arayüz tipinde, `error`'da,
+	type error interface {
+		Error() string
+	}
 
-dizgi döndüren, kendi tekil metoduyla (`Error`) saklanır,:
+`fmt` paketlerinin kendi çıktı tipleri bir "`error`" çıktısı istendiğinde onu nasıl sunacaklarını otomatik olarak bilir.
 
-`fmt` paketlerinin kendi çıktı tipleri bir "`error`"
-
-çıktısı istendiğinde onu nasıl sunacaklarını otomatik olarak bilir.
-
-.play prog/errors.go
+.play prog/tour/errors.go
 
 * Uygulama: Hatalar
 
 `Sqrt` fonksiyonunuzu önceki egzersizlerden kopyalayın ve onu bir `error` (hata) değeri döndürecek şekilde düzenleyin.
 
-`Sqrt` fonksiyonunuz negatif bir sayı verildiğinde, tıpkı kompleks sayıları desteklemediğinde yapacağı gibi. nil olamayan bir hata mesajı döndürmelidir,
+`Sqrt` fonksiyonunuz negatif bir sayı verildiğinde, tıpkı kompleks sayıları desteklemediğinde yapacağı gibi, nil olamayan bir hata mesajı döndürmelidir.
 
 Yeni bir tip oluşturun
 
@@ -612,17 +619,17 @@ ve ona bir
 
 	func (e ErrNegativeSqrt) Error() string
 
-metodu ekleyere `error` haline getirin `ErrNegativeSqrt(-2).Error()`'un `"Negatif sayıların karekökü alınamaz: -2"` döndürmesi gibi.
+metodu ekleyerek `error` haline getirin `ErrNegativeSqrt(-2).Error()`'un `"Negatif sayıların karekökü alınamaz: -2"` döndürmesi gibi.
 
 *Not:* `Error` metodunun içindeki `"fmt.Print(e)"`e yapılan bir çağrı programı sonsuz bir döngünün içerisine sokacaktır. Öncelikle e'yi değiştirerek bunu önleyebilirsiniz: `fmt.Print(float64(e))`. Neden?
 
 `Sqrt` fonksiyonunuzu negatif sayı verildiğinde `ErrNegativeSqrt` döndürecek biçimde değiştirin.
 
-.play prog/exercise-errors.go
+.play prog/tour/exercise-errors.go
 
 * Web sunucuları
 
-[[http://golang.org/pkg/net/http/][http paketi]] HTTP isteklerini, http.Handler’ ı gerçekleyen değerleri kullanarak karşılar:
+[[http://golang.org/pkg/net/http/][http paketi]] HTTP isteklerini, `http.Handler`’ ı gerçekleyen değerleri kullanarak karşılar:
 
 	package http
 
@@ -634,11 +641,11 @@ Bu örnekte, Hello tipi "http.Handler"ı gerçekliyor.
 
 Selamlamayı görmek için [[http://localhost:4000/][http://localhost:4000/]]'i ziyaret edin.
 
-#appengine: *Note:* Bu örnek web-tabanlı kullanıcı arayüzünde çalışmayacaktır.
+#appengine: *Not:* Bu örnek web-tabanlı kullanıcı arayüzünde çalışmayacaktır.
 #appengine: Web sunucusu yazmayı denemek için
 #appengine: [[http://golang.org/doc/install/][Go'yu yükleyin]].
 
-.play prog/web-servers.go
+.play prog/tour/web-servers.go
 
 * Uygulama: HTTP İşleyicileri
 
@@ -657,7 +664,7 @@ ServeHTTP metodlarını tanımlamak için aşağıdaki tipleri kullanın. Web su
 	http.Handle("/string", String("I'm a frayed knot."))
 	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
 
-.play prog/exercise-http-handlers.go
+.play prog/tour/exercise-http-handlers.go
 
 * Görüntüler
 
@@ -675,7 +682,7 @@ ServeHTTP metodlarını tanımlamak için aşağıdaki tipleri kullanın. Web su
 
 Ayrıca, `color.Color` ve `color.Model` da birer arayüzdür ancak `color.RGBA` ve `color.RGBAModel` öntanımlı uygulamaları için bunu görmezden geleceğiz.
 
-.play prog/images.go
+.play prog/tour/images.go
 
 * Uygulama: Görüntüler
 
@@ -689,26 +696,24 @@ Kendi Image tipinizi tanımlayın, [[http://golang.org/pkg/image/#Image][gerekli
 
 `At` bir renk döndürmelidir; son görüntü vericideki `v` değeri bu defa `color.RGBA{v, `v, `255, `255}`'e tekabül etmelidir.
 
-.play prog/exercise-images.go
+.play prog/tour/exercise-images.go
 
 * Uygulama: Rot13 Okuyucu
 
-Bilindik modellerden biri [[http://golang.org/pkg/io/#Reader][io.Reader]]'ın  `başka bir io.Reader`' ı sarıp, bir şekilde akışı düzenlemesidir. /* %100 emin değilim wrap ve stream terimlerine tekrar göz atmak lazım*/
+Bilindik modellerden biri [[http://golang.org/pkg/io/#Reader][io.Reader]]'ın  `başka bir io.Reader`' ı sarıp, bir şekilde akışı düzenlemesidir.
 
-Örneğin, [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]]
-fonksiyonu bir `io.Reader` alır ("gzipped" verinin bir parçası)
-ve onu bir `*gzip.Reader`'a çevirir ayrıca
-`io.Reader`'ı da gerçekler (sıkıştırılmış verinin bir parçası).
+Örneğin, [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] fonksiyonu bir `io.Reader` alır ("gzipped" verinin bir parçası) ve onu bir `*gzip.Reader`'a çevirir ayrıca `io.Reader`'ı da gerçekler (sıkıştırılmış verinin bir parçası).
 
-[[http://en.wikipedia.org/wiki/ROT13][ROT13]] kullanarak alfabedeki tüm harfleri şifreleyen
-`io.Reader`'dan okuyup yine `io.Reader`'a yazan bir `rot13Reader`'ı,
-veri akışını düzenleyerek uygulayın.
+[[http://en.wikipedia.org/wiki/ROT13][ROT13]] kullanarak alfabedeki tüm harfleri şifreleyen `io.Reader`'dan okuyup yine `io.Reader`'a yazan bir `rot13Reader`'ı, veri akışını düzenleyerek uygulayın.
+
 `rot13Reader` tipini kullanabilirsiniz. `Read` metodunu
 kullanarak onu bir `io.Reader` haline getirin.
 
-.play prog/exercise-rot-reader.go
+.play prog/tour/exercise-rot-reader.go
 
 * Eşzamanlılık
+
+İlerideki bölüm Go'nun ilkel("primitif") eşzamanlılık özelliğini içeriyor.
 
 * Go rutinleri
 
@@ -716,46 +721,38 @@ kullanarak onu bir `io.Reader` haline getirin.
 
 	go f(x, y, z)
 
-	yeni bir gorutini başlatır
+yeni bir gorutini başlatır
 
 	f(x, y, z)
 
-'`f`', '`x`', '`y`' ve '`z`'nin
-değerlendirilmesi aynı gorutinde `f`'nin içinde, `f`'nin
-değerlendirilmesi ise yeni bir gorutininde gerçekleşir.
+'`f`', '`x`', '`y`' ve '`z`'nin değerlendirilmesi aynı gorutinde `f`'nin içinde, `f`'nin değerlendirilmesi ise yeni bir gorutininde gerçekleşir.
 
-Gorutinleri aynı adres boşluğunda çalışır, bu yüzden paylaşılmış bellek erişimi
-mutlaka senkronize edilmelidir. `[[http://golang.org/pkg/sync/][sync]]` paketi yararlı "ilkellikler" sağlar,
-yine de Go'da başka "ilkel paketler" olduğundan buna çok ihtiyaç duymayacaksınız.
-(Bir sonraki slayta geçin.)
+Gorutinleri aynı adres boşluğunda çalışır, bu yüzden paylaşılmış bellek erişimi mutlaka senkronize edilmelidir. `[[http://golang.org/pkg/sync/][sync]]` paketi yararlı "ilkellikler" sağlar, yine de Go'da başka "ilkel paketler" olduğundan buna çok ihtiyaç duymayacaksınız. (Bir sonraki slayta geçin.)
 
-.play prog/goroutines.go
+.play prog/tour/goroutines.go
 
 * Kanallar
 
-Kanallar, kanal operatörü vasıtasıyla değer gönderip alabildiğiniz veri akışı sağlayan birer tiptir, `<-`.
+Kanallar, kanal operatörü, `<-`, vasıtasıyla değer gönderip alabildiğiniz veri akışını sağlayan tiplerdir.
 
 	ch <- v    // v'yi ch kanalına yolla.
 	v := <-ch  // ch'den al ve
            // değeri v'ye ata.
 
-	(Veri akışı ok yönünde gerçekleşir.)
+(Veri akışı ok yönünde gerçekleşir.)
 
-	Tıpkı eşlemler ve dilimler gibi kanallar da:
+Tıpkı eşlemler ve dilimler gibi kanallar da:
 
 	ch := make(chan int)
 
 kullanılmadan önce oluşturulmalıdır.
-Varsayılan olarak, diğer taraf da hazır olduğunda blok gönderme/alma işlemleri yapılır.
-Bu da gorutinlerini açık kilitlenmelerden ya da koşullu değişkenlerin senkronize
-edilememesinden korur.
+Varsayılan olarak, diğer taraf da hazır olduğunda blok gönderme/alma işlemleri yapılır. Bu da gorutinlerini açık kilitlenmelerden ya da koşullu değişkenlerin senkronize edilememesinden korur.
 
-.play prog/channels.go
+.play prog/tour/channels.go
 
 * Tamponlu Kanallar
 
-Kanallar _tamponlanabilir_.  Tamponlanmış bir kanalı tanımlamak için
-ikinci argümanı `make` edip, tampon uzunluğunu temin edin:
+Kanallar _tamponlanabilir_.  Tamponlanmış bir kanalı tanımlamak için ikinci argümanı `make` edip, tampon uzunluğunu temin edin:
 
 	ch := make(chan int, 100)
 
@@ -765,13 +762,11 @@ Tampon boş olduğunda ise bloğu temin eder. /* daha düzgün bir çeviri öner
 
 Örneği, tampon gereğinden fazla dolacak şekilde düzenleyip, ne olduğunu gözlemleyin.
 
-.play prog/buffered-channels.go
+.play prog/tour/buffered-channels.go
 
 * Range ve Close
 
-Gönderici bir kanalı daha fazla değer alınmaması gerektiğinde
-`close` kodu ile kapatabilir. Alıcılar, alıcı ifadeye ikinci bir parametre ataması yaparak
-kanalın kapalı olup olmadığını öğrenebilir:
+Gönderici bir kanalı daha fazla değer alınmaması gerektiğinde `close` kodu ile kapatabilir. Alıcılar, alıcı ifadeye ikinci bir parametre ataması yaparak kanalın kapalı olup olmadığını öğrenebilir:
 
 	v, ok := <-ch
 
@@ -779,29 +774,25 @@ Eğer alınacak başka değer kalmamış ve kanal kapatılmışsa `ok`, `false` 
 
 `for i := range c` döngüsü değerleri kanaldan kanal kapanana kadar düzenli olarak alır.
 
-*Not:* Yalnızca gönderen kanalı kapatmalıdır, alıcı asla kapatmamalıdır.
-Kapalı kanala bir şeyler göndermek paniğe yol açabilir.
+*Not:* Yalnızca gönderen kanalı kapatmalıdır, alıcı asla kapatmamalıdır. Kapalı kanala bir şeyler göndermek paniğe yol açabilir.
 
-*Bir*başka*not*: Kanallar dosya gibi değildir; genellikle kapatma ihtiyacı
-duyulmaz. Kapatma işlemi yalnızca alıcıya daha başka değer gelmeyeceğini bildirmek
-maksadıyla yapılır, tıpkı bir "`range`" döngüsünü sonlandırmak gibi.
+*Bir*başka*not*: Kanallar dosya gibi değildir; genellikle kapatma ihtiyacı duyulmaz. Kapatma işlemi yalnızca alıcıya daha başka değer gelmeyeceğini bildirmek maksadıyla yapılır, tıpkı bir "`range`" döngüsünü sonlandırmak gibi.
 
-.play prog/range-and-close.go
+.play prog/tour/range-and-close.go
 
 * Seçmek
 
 "`select`" deyimi gorutinin birden fazla iletişim işleminde beklemesine izin verir.
 
-Bir `select`, "case"lerinden biri çalıştırılabilene kadar tıkalıdır, uygun duruma geldiğinde
-"case"i çalıştırır.  Eğer birden fazla çalıştırılabilir "case" varsa seçimi rastgele gerçekleştirir.
+Bir `select`, "case"lerinden biri çalıştırılabilene kadar tıkalıdır, uygun duruma geldiğinde "case"i çalıştırır.  Eğer birden fazla çalıştırılabilir "case" varsa seçimi rastgele gerçekleştirir.
 
-.play prog/select.go
+.play prog/tour/select.go
 
 * Varsayılan Seçim
 
 "`default` “case” i, "`select`" in içerisindedir eğer hazırda başka case yoksa çalıştırılır.
 
-"<code>default</code> case"i bloklama yapmadan alma ya da gönderme yapmak için deneyin:
+"`default` case"i bloklama yapmadan alma ya da gönderme yapmak için deneyin:
 
 	select {
 	case i := <-c:
@@ -810,26 +801,23 @@ Bir `select`, "case"lerinden biri çalıştırılabilene kadar tıkalıdır, uyg
 		// c'den almak bloklamalıydı
 	}
 
-.play prog/default-selection.go
+.play prog/tour/default-selection.go
 
 * Uygulama: Eşdeğer Binary Ağaçları
 
-Değerleri aynı sırada depolanmış birden fazla binary apacı olabilir.
-Örneğin, burada iki binary ağacı var 1, 1, 2, 3, 5, 8, 13.
+Değerleri aynı sırada depolanmış birden fazla binary apacı olabilir. Örneğin, burada iki binary ağacı var 1, 1, 2, 3, 5, 8, 13.
 
 .image static/tree.png
 
-Bir çok dilde, aynı sırada iki binary ağacı olup olmadığını kontrol eden fonksiyon bir fonksiyon gerçeklemek
-bir hayli karışıktır. Daha basit bir çözüm sunabilmek adına Go'nun eşzamanlılığını ve kanallarını kullanacağız.
+Bir çok dilde, aynı sırada iki binary ağacı olup olmadığını kontrol eden fonksiyon bir fonksiyon gerçeklemek bir hayli karışıktır. Daha basit bir çözüm sunabilmek adına Go'nun eşzamanlılığını ve kanallarını kullanacağız.
 
-Bu örnek <code>tree</code> paketini kullanır, bu paket:
+Bu örnek `tree` paketini kullanır, bu paket:
 
 	type Tree struct {
 		Left  *Tree
 		Value int
 		Right *Tree
 	}
-
 tiplerini tanımlar.
 
 * Uygulama: Eşdeğer Binary Ağaçları
@@ -838,8 +826,7 @@ tiplerini tanımlar.
 
 *2.* `Walk` fonksiyonunu test edin.
 
-"`tree.New(k)`" fonksiyonu `k`, `2k`, `3k`, ..., `10k` değerlerini tutarak rastgele-yapılandırılmış
-bir binary ağacı inşa eder.
+"`tree.New(k)`" fonksiyonu `k`, `2k`, `3k`, ..., `10k` değerlerini tutarak rastgele-yapılandırılmış bir binary ağacı inşa eder.
 
 `ch` adında bir kanal oluşturun ve walker'ı dışarı atın:
 
@@ -853,7 +840,7 @@ Daha sonra kanaldan 10 değerini okuyun ve yazın. Değerler 1, 2, 3, ..., 10 ol
 
 `Same(tree.New(1),`tree.New(1))` true döndürmeli ve `Same(tree.New(1),`tree.New(2))` false döndürmeli.
 
-.play prog/exercise-equivalent-binary-trees.go
+.play prog/tour/exercise-equivalent-binary-trees.go
 
 * Uygulama: Web Crawler
 
@@ -861,7 +848,7 @@ Bu uygulamada Go'nun eşzamanlılık özelliğini web crawler ile paralelleştir
 
 `Crawl` fonksiyonunu paraleldeki URL'leri çekecek biçimde düzenleyin, aynı URL'yi iki defa çekmemesine dikkat edin.
 
-.play prog/exercise-web-crawler.go
+.play prog/tour/exercise-web-crawler.go
 
 * Buradan nereye gidiyoruz...
 
@@ -870,18 +857,24 @@ Bu uygulamada Go'nun eşzamanlılık özelliğini web crawler ile paralelleştir
 #appengine: indirerek başlayabilirsiniz.
 
 #appengine: Bir defa Go'yu yüklediğinizde,
-The
-[[http://golang.org/doc/][Go Dokümantasyonu]] başlangıca
-#appengine: devam etmek için.
-çok güzel olacaktır.
+[[http://golang.org/doc/][Go Dokümantasyonu]]
+#appengine: devam etmek için çok güzel olacaktır.
+başlamak için çok güzel olacaktır.
 
-Bu dökümanda Kaynakları, eğitimi, videoları, ve fazlasını bulabilirsiniz.
+Bu dokümanda Kaynakları, eğitimi, videoları, ve fazlasını bulabilirsiniz.
 
 Go kodu ile nasıl çalışılabileceğini öğrenmek için, [[http://www.youtube.com/watch?v=XCsL89YtqCs][bu videoyu]]izleyebilir ya da [[http://golang.org/doc/code.html][How to Write Go Code]] dokümanını okuyabilirsiniz.
 
 Standart kütüphane ile ilgili yardıma ihtiyacınız olursa, [[http://golang.org/pkg/][kaynak pakete]]bir göz atın. Dilin kendisine yardım etmek için, [[http://golang.org/ref/spec][Dil Belirtimi]]'ni, epey okunabilir bulduğunuzda şaşırabilirsiniz.
 
-Go'nun eşzamanlı modeli hakkında daha fazla araştırma için, [[http://golang.org/doc/codewalk/sharemem/][İletişimde Paylaşılan Hafıza]]'ya göz atın.
+Go'nun eşzamanlı modeli hakkında daha fazla araştırma için, [[http://www.youtube.com/watch?v=f6kdp27TYZs][Go Eşzamanlılık Şablonu]]'nu
+ve[[https://www.youtube.com/watch?v=QDDwwePbDtw][ Go Gelişmiş Eşzamanlılık Şablonu]]'nu izleyin ve
+([[http://talks.golang.org/2012/concurrency.slide][slides]])[[http://golang.org/doc/codewalk/sharemem/][İletişimde Paylaşılan Hafıza]]'ya göz atın.
+
+Web uygulamaları yazmaya başlamak için,
+[[http://vimeo.com/53221558][Basit Programlama Çerçevesi]]'ni
+([[http://talks.golang.org/2012/simple.slide][slayltları]]) izleyin ve
+[[http://golang.org/doc/articles/wiki/][Web Uygulamaları Yazma]] rehberini okuyun.
 
 [[http://golang.org/doc/codewalk/functions/][Go'da Birinci Sınıf Fonksiyonlar]] Go'nun fonksiyon tipleri hakkında ilginç bir bakış açısı sunacaktır.
 
