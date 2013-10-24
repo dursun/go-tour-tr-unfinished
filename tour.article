@@ -4,11 +4,12 @@ Go Yazarları Sunar
 http://golang.org
 
 # Bu dosya içerisinde #appengine komutuyla başlayan
-# satırlar var. Bu satırlar tur içeriği, bir App Engine
-# uygulaması olarak yüklendiğinde işe yarar.
-# Ayrıca, #appengine satırının arkasına gelen boş olmayan
-# satırlar saklanacaktır. Bu App Engine'ın özel-içeriğinin
-# değiştirilebilmesiyle alakalı bir durum.
+# satırlar var. Bu satırların tur içeriğine dahil
+# olabilmesi için App Engine uygulaması olarak 
+# yüklenmesi gerekir.
+# Ayrıca, #appengine satırının hemen ardından gelen boş olmayan
+# satırlar gizlenecektir. Bu App Engine'e özel varolan içeriğin 
+# yerini almasını sağlar.
 # Örneğin, bu paragraf
 # 	We are running
 # 	#appengine: on App Engine.
@@ -29,29 +30,29 @@ Turumuz etkileşimlidir. Programı uzak sunucu üzerinde derleyip, çalıştırm
 #appengine: uzak sunucuda
 kendi bilgisayarınızda
 çalıştırılacak.
-Sonuç kodun aşağısında gösterilecek.
+Sonuç kodun altında gösterilecek.
 
-Örnek programlar sizi Go'nun farklı yönleriyle tanıştırarak, gelecekteki tecrübeleriniz için ilk adımları oluşturacak.
+Örnek programlar sizi Go'nun farklı yönleriyle tanıştıracak ve gelecekteki tecrübeleriniz için ilk adımları oluşturacak.
 
 Programı düzenleyip yeniden çalıştırın.
 
 İlerlemeye hazır olduğunuzda aşağıdaki sağ oka tıklayın ya da PageDown tuşlayın.
-Aynı zamanda gezinmek için sayfanın üzerinde, "Go" bayrağının altında bulunan menüyü de kullanabilirsiniz.
+Gezinmek için sayfanın üzerinde, "Go" bayrağının altında bulunan menüyü de kullanabilirsiniz.
 
 .play prog/tour/hello.go
 
-* Go lokal
+* Dilinizde Go
 
 Turu diğer dillerle de deneyebilirsiniz:
 
-- [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
-- [[http://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[http://go-tour-es.appspot.com/][Spanish — Español]]
-- [[http://go-tour-fr.appspot.com/][French - Français]]
-- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
-- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
-- [[http://go-tour-ro.appspot.com/][Romanian - Româna]]
-- [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
+- [[http://go-tour-br.appspot.com/][Brezilya Portekizcesi — Português do Brasil]]
+- [[http://go-tour-ca.appspot.com/][Katalanca — Català]]
+- [[http://go-tour-es.appspot.com/][İspanyolca — Español]]
+- [[http://go-tour-fr.appspot.com/][Fransızca - Français]]
+- [[http://go-tour-he.appspot.com/][İbranice — עִבְרִית]]
+- [[http://go-tour-jp.appspot.com/][Japonca — 日本語]]
+- [[http://go-tour-ro.appspot.com/][Rumence - Româna]]
+- [[http://go-tour-zh.appspot.com/][Çince — 普通话]]
 
 Devam etmek için "İleri" butonuna tıklayın ya da Page Down tuşlayın.
 
@@ -63,11 +64,11 @@ Devam etmek için "İleri" butonuna tıklayın ya da Page Down tuşlayın.
 #appengine: Bu servis, Go programını, bir sanal alan içerisine alıp, derler, bağlar ve çalıştırır.
 #appengine: ve çıktıyı döndürür.
 #appengine: 
-#appengine: Playground içinde çalıştırılabilen programların kısıtlamaları var:
+#appengine: Playground içinde çalıştırılabilen programların kısıtlamaları vardır:
 #appengine: 
-#appengine: - Playground standart kütüphaneyi, bazı eksikliklerle, kullanabilir; en önemli eksiklikler ağ ve dosya sistemi erişimi. Bu nedenle, playground programının dış dünyayla tek iletişimi "standard output" ve "standard error"dur.
-#appengine: - Playground'ta zaman 2009-11-10 23:00:00 UTC'de başlar (bu değerin önemi okuyucu için bir alıştırma niteliğinde olmasıdır). Bu programlara deterministik çıkışlar vererek önbelleğe alınmalarını kolaylaştırır.
-#appengine: - Yürütme zamanı, CPU, bellek kullanımında da kısıtlamalar var ve program tek bir iş parçacığı("thread") içerisinde çalışacak şekilde kısıtlanmıştır (ama birçok gorutini kullanabilir).
+#appengine: - Playground standart kütüphanenin çoğunu, ağ ve dosya sistemi erişimi eksiklikleri gibi göze çarpan bazı istisnalar dışında, kullanabilir. Bu nedenle, playground programının dış dünyayla tek iletişimi "standard output" ve "standard error"dur.
+#appengine: - Playground'ta zaman 2009-11-10 23:00:00 UTC'de başlar (bu tarihin öneminin ne olduğunu bulmak okuyucu için alıştırma niteliğindedir). Bu programlara deterministik çıkışlar vererek önbelleğe alınmalarını kolaylaştırır.
+#appengine: - Yürütme zamanı, CPU, bellek kullanımında da kısıtlamalar var ve program tek bir iş parçacığı("thread") içerisinde çalışacak şekilde kısıtlanmıştır (ama birçok goroutine kullanabilir).
 #appengine:
 #appengine: Playground Go'nun son kararlı sürümünü kullanır.
 #appengine: 
@@ -92,16 +93,16 @@ Geleneksel olarak, paket isimleri import yolunun son elementi ile isimlendirilir
 
 * İçe Aktarımlar
 
-Bu kod, içe aktarılan paketleri, parantezlenmiş alanda, parçalara ayrılmış import deyimi şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
+Bu kod, içe aktarılan paketleri, parantezlenmiş ve parçalara ayrılmış import deyimi şeklinde gruplar. Ayrıca çoklu import deyimleri de kullanabilirsiniz:
 
 	import "fmt"
 	import "math"
 
 .play prog/tour/imports.go
 
-* İçe Aktarılan İsimler
+* Dışa Aktarılan İsimler
 
-Bir paketi içe aktardıktan sonra, sahip olduğu isimleri de aktarabilirsiniz.
+Bir paketi içe aktardıktan sonra, dışa aktardığı isimleri de belirtebilirsiniz.
 
 Go'da, dışa aktarılmış bir isim büyük harf ile başlar.
 
@@ -117,21 +118,21 @@ Bir fonksiyon 0 veya daha fazla argüman alabilir.
 
 Bu örnekte, `add` fonksiyonu `int` tipinde 2 parametre alıyor.
 
-Tip tanımlamasının değişken adından _sonra_ yapıldığına dikkat edin!
+Değişken türünün değişken adından _sonra_ gelmesine dikkat buyurun.
 
-(Tiplerin neden buna ihtiyaç duydukları hakkında daha fazla bilgi için, [[[http://golang.org/doc/articles/gos_declaration_syntax.html][buraya]] bakın makale Go'nun "sözdizimi açıklaması"ndandır.)
+(Değişken tiplerinin neden bu şekilde tanımlandıkları hakkında daha fazla bilgi için; [[[http://golang.org/doc/articles/gos_declaration_syntax.html][Go'nun bildirim sözdizimi]] makalesine bakınız.)
 
 .play prog/tour/functions.go
 
-* Fonksiyonlar devamı
+* Fonksiyonlar devam
 
-Ardışık fonksiyon parametreleri aynı tipi paylaşıyorsa, tip adını en sona yazarak tanımlama yapabiliriz.
+İki ya da daha fazla ardışık fonksiyon parametreleri aynı türde ise, tür bilgisini en sondaki hariç diğerlerinde belirtmeseniz de olur.
 
 Bu örnekte,
 
 x int, y int
 
-kod parçası aşağıdaki şekilde kısaltılmış;
+kod parçası aşağıdaki şekilde kısalttık;
 
 x, y int
 
@@ -147,15 +148,15 @@ Bir fonksiyon herhangi bir sayıda sonuç döndürebilir.
 
 * İsimlendirilmiş sonuçlar
 
-Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar birden fazla sonuç ("result") parametresi alabilir. Sonuçlar da değişken gibi isimlendirilebilir ve o şekilde davranabilir.
+Fonksiyonlar parametreler alırlar. Go'da fonksiyonlar sadece tek bir değer değil, birden fazla sonuç parametresi ("result parameters") alabilir. Sonuçlar da değişken gibi isimlendirilebilir ve o şekilde davranabilir.
 
-Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` deyimi sonuçların geçerli değerini döndürecektir.
+Eğer sonuç parametreleri isimlendirilmişse, argümansız bir `return` deyimi sonuç parametrelerinin geçerli değerlerini döndürecektir.
 
 .play prog/tour/named-results.go
 
 * Değişkenler
 
-`var` deyimi ile değişkenleri tanımlarız; tıpkı fonksiyon argümanları gibi, tip tanımlaması sonda yapılır.
+`var` deyimi ile değişkenler tanımlarız; tıpkı fonksiyon argümanları gibi, tür tanımlaması sondadır.
 
 .play prog/tour/variables.go
 
@@ -189,7 +190,7 @@ Go'nun basit tipleri şunlardır
 	byte // diğer adıyla uint8
 
 	rune // diğer adıyla int32
-	     // represents a Unicode code point
+	     // Unicode kodlarını ifade eder
 
 	float32 float64
 
@@ -221,25 +222,25 @@ Tipi olmayan bir sabit kaynağının ihtiyaç duyduğu tipi alır.
 
 Go dilinde döngü yapısı olarak sadece `for` mevcuttur.
 
-`for` döngüsü C ya da Java'dakiyle benzer yapıdadır, ancak `(`)` kısmı (parantezler) kullanılmaz (opsiyonel değil)
+`for` döngüsü C ya da Java'dakiyle benzer yapıdadır, ancak `(`)` kısmı (parantezler) kullanılmaz (opsiyonel bile değildir)
 
 bunun yanında `{`}` kısmının kullanılması şarttır.
 
 .play prog/tour/for.go
 
-* For devamı
+* For devam
 
-Tıpkı C ve Java'daki gibi, ilk ve son deyimleri boş bırakabilirsiniz.
+Tıpkı C ve Java'daki gibi, ön (birinci) ve son (üçüncü) deyimleri boş bırakabilirsiniz.
 
 .play prog/tour/for-continued.go
 
-* For, Go'nun "while"ı
+* For, Go'nun "while"ıdır
 
 Bu durumda, noktalı virgülleri kullanmayabilirsiniz: C'deki `while`'ın karşılığı Go'da `for`'dur.
 
 .play prog/tour/for-is-gos-while.go
 
-* Forever
+* Sonsuza kadar
 
 Eğer döngü koşulunu belirtmezseniz, sonsuz döngü oluşacaktır.
 
